@@ -5,7 +5,11 @@ services:
     build: ./srcs/requirements/mariadb
     container_name: mariadb
     restart: always
-    env_file: .env
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wp_user
+      MYSQL_PASSWORD: 1234
+      MYSQL_ROOT_PASSWORD: 1234
     ports:
       - "3306:3306"
     networks:
