@@ -1,25 +1,31 @@
 version: '3.8'
 
 services:
-  mariadb:
-    build: ./srcs/requirements/mariadb
-    container_name: mariadb
-    restart: always
-    environment:
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wp_user
-      MYSQL_PASSWORD: 1234
-      MYSQL_ROOT_PASSWORD: 1234
+  nginx:
+    build: requirements/nginx/.
+    container_name: nginx
     ports:
-      - "3306:3306"
-    networks:
-      - inception
-    volumes:
-      - mariadb_data:/var/lib/mysql
+      - "80:80"
 
-networks:
-  inception:
+#   mariadb:
+#     build: ./srcs/requirements/mariadb
+#     container_name: mariadb
+#     restart: always
+#     environment:
+#       MYSQL_DATABASE: wordpress
+#       MYSQL_USER: wp_user
+#       MYSQL_PASSWORD: 1234
+#       MYSQL_ROOT_PASSWORD: 1234
+#     ports:
+#       - "3306:3306"
+#     networks:
+#       - inception
+#     volumes:
+#       - mariadb_data:/var/lib/mysql
 
-volumes:
-  mariadb_data:
-    driver: local
+# networks:
+#   inception:
+
+# volumes:
+#   mariadb_data:
+#     driver: local
